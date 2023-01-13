@@ -4,6 +4,14 @@ For study object locator using TensorFlow layer without grids loop
 
 ## object_locators ##
 
+It is simply matching boxes we remarks after removed original image it is the ```picture + our remark values``` .
+
+1. Read target image file and decode it into binary, image or array of numbers format.
+2. Draws gride boxes for the area.
+3. Convolution the image for normalized pixel color value within the kernel size ```Conv layers```, specific the initialize value and bias to 0.
+4. Pass the previous step result into ```Dense ```, target result is image with in rages of value standards ( test it if input has value it return some value contrast ).
+5. Find contrast X and contrast Y and resizes for summation.
+6. Presents.
 
 ```
 def object_locators( FILE="F:\\Pictures\\actor-Ploy\\001.jpg" ):
