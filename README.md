@@ -1,6 +1,59 @@
 # object_locators
 For study object locator using TensorFlow layer without grids loop
 
+
+## object_locators ##
+
+
+```
+def object_locators( FILE="F:\\Pictures\\actor-Ploy\\001.jpg" ):
+    image = tf.io.read_file( FILE )
+    image = image_original = tf.io.decode_jpeg( image )
+    image = tf.keras.utils.img_to_array( image )
+    print( "image shape: " + str( image.shape ) )
+
+    result_image = draw_bounding_box( image, n = 0 )
+    result_image = draw_bounding_box( result_image, n = 1 )
+    result_image = draw_bounding_box( result_image, n = 2 )
+    result_image = draw_bounding_box( result_image, n = 3 )
+    result_image = draw_bounding_box( result_image, n = 4 )
+    result_image = draw_bounding_box( result_image, n = 5 )
+    result_image = draw_bounding_box( result_image, n = 6 )
+    result_image = draw_bounding_box( result_image, n = 7 )
+    result_image = draw_bounding_box( result_image, n = 8 )
+    result_image = draw_bounding_box( result_image, n = 9 )
+
+    result_image = target_conv_image( result_image )
+    original_conv_image = target_conv_image( image )
+
+
+    Dense_layer = tf.keras.layers.Dense(10, kernel_initializer=tf.random_normal_initializer(mean=1., stddev=2.), 
+                    bias_initializer=tf.constant_initializer( value=0.0 ), activation='relu')
+    temp = Dense_layer( tf.keras.utils.img_to_array( tf.keras.utils.img_to_array( original_conv_image ) - 
+                    tf.keras.utils.img_to_array( result_image ) ) )
+
+
+    temp = tf.math.argmax( temp, axis=2)
+    temp_y = tf.math.argmax( temp, axis=1)
+    temp_x = tf.math.argmax( temp, axis=0)
+
+
+    temp_x = tf.expand_dims(temp_x, axis=0)
+    temp_y = tf.expand_dims(temp_y, axis=1)
+    temp = tf.math.multiply(temp_x, temp_y)
+    temp = tf.expand_dims(temp, axis=2)
+
+
+    image = tf.image.resize(temp, [23, 18])
+    image = image[11:16,:,:]
+
+    image = tf.reduce_sum( image, axis=0 )
+    temp = tf.keras.activations.softmax( image, axis=0 )
+    y, idx = tf.unique( tf.squeeze( temp ).numpy() )
+
+    return image_original, result_image, idx
+```
+
 ## Files and Directory ##
 
 | File name | Description |
