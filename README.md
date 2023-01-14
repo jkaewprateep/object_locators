@@ -81,3 +81,6 @@ def object_locators( FILE="F:\\Pictures\\actor-Ploy\\001.jpg" ):
 
 
 ![result 3](https://github.com/jkaewprateep/object_locators/blob/main/Figure_3.png "result 3")
+
+#### Video application ####
+![result 4](https://github.com/jkaewprateep/object_locators/blob/main/ezgif.com-gif-maker%20(30).gif "result 4")
