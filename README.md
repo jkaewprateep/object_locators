@@ -84,3 +84,6 @@ def object_locators( FILE="F:\\Pictures\\actor-Ploy\\001.jpg" ):
 
 #### Video application ####
 ![result 4](https://github.com/jkaewprateep/object_locators/blob/main/ezgif.com-gif-maker%20(30).gif "result 4")
+
+#### Environment responses application ####
+![result 5](https://github.com/jkaewprateep/object_locators/blob/main/Marios%20Bros.gif "result 5")
